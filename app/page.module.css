@@ -130,6 +130,8 @@
   flex-direction: column;
   padding-top: 1rem;
 }
+
+
 .linkBox span{
   margin: 1rem;
   margin-bottom: 2rem;
@@ -156,3 +158,33 @@
 }
 
 
+@media (min-width: 50px){
+  .linkBox{
+    width: 600px;
+  }
+
+  .mainApp{
+    margin: 2rem;
+    width: auto;
+  }
+
+  .mainApp .p{
+    font-size: 32px;
+    font-weight: 500;
+    margin-bottom: 3rem;
+  }
+
+  .phoneNumber{
+    padding: 16px;
+  }
+  
+}
+
+@media (min-width: 930px ){
+  .mainApp{
+    max-width: 900px;
+    position:fixed; 
+    left: calc(50% - 450px);
+    top: -10%;
+  }
+}

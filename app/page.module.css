@@ -158,7 +158,7 @@
 }
 
 
-@media (min-width: 50px){
+@media (min-width: 500px){
   .linkBox{
     width: 600px;
   }

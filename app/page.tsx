@@ -7,14 +7,15 @@ export default function Home() {
 
   const [link, setLink] = useState("")
   const [modal, setModal] = useState(false)
+  const [formValues, setFormValues] = useState({
+    text: "",
+    phoneNumber: ""
+  })
 
   const genLink = (event: any) => {
     event.preventDefault()
-    let text = document.querySelector('#textArea')
-    let phoneNumber = document.querySelector("#phoneNumber").value
-
-    let textReplaceSpaces = text.value.replace(/ /g, "+")
-    let final_link = `https://wa.me/55${phoneNumber}?text=${textReplaceSpaces}`
+    let textReplaceSpaces = formValues.text.replace(/ /g, "+")
+    let final_link = `https://wa.me/55${formValues.phoneNumber}?text=${textReplaceSpaces}`
 
     setLink(final_link)
     console.log(final_link)
@@ -40,23 +41,25 @@ export default function Home() {
           <p className={styles.p}>Olá, sou o Click2Chat e facilito sua vida gerando links com textos automáticos para o seu cliente atráves do WhatsAPP.
           </p>
 
-          <input type='number' placeholder='Digite aqui o seu número' id='phoneNumber' className={styles.phoneNumber}></input>
-          <textarea className={styles.textArea} id="textArea" placeholder='Digite aqui a sua mensagem...'/>
+          <input type='number' placeholder='Digite aqui o seu número' id='phoneNumber' className={styles.phoneNumber} onChange={(e) => setFormValues({
+            ...formValues, phoneNumber: e.target.value
+          })}></input>
+          <textarea className={styles.textArea} id="textArea" placeholder='Digite aqui a sua mensagem...'onChange={(e) => setFormValues({
+            ...formValues, text: e.target.value
+          })}/>
           <button className={styles.converterButton} onClick={genLink}>Gerar Link</button>
         </div>
+
       </section>
+          {modal && <div className={styles.linkModal}>
+          {/* Link Modal */}
+          <div  className={styles.linkBox}>
+          < span>Proto!! Aqui está o link para o seu chat. :)</span>
 
-
-
-      {modal && <div className={styles.linkModal}>
-        {/* Link Modal */}
-        <div  className={styles.linkBox}>
-        < span>Proto!! Aqui está o link para o seu chat. :)</span>
-
-          <a className={styles.link} target='_blank'>{link}</a>
-          <button onClick={closeModal}>Fechar</button>
-        </div>
-      </div>}
+            <a className={styles.link} target='_blank' href={link}>{link}</a>
+            <button onClick={closeModal}>Fechar</button>
+          </div>
+        </div>}
     </main>
   );
 }

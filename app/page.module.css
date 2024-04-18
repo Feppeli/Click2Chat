@@ -103,14 +103,10 @@
   backdrop-filter: blur(8.8px);
   -webkit-backdrop-filter: blur(8.8px);
 
-
-
-
-  width: 100%;
+  width: 300px;
   height: 100%;
   position: absolute;
   top: 0;
-  word-wrap: break-word;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -121,13 +117,11 @@
 
 .linkBox{
   background: #fff;
+  width: 300px;
   margin: 1rem;
   padding: 1rem;
   border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+  word-wrap: break-word;
   padding-top: 1rem;
 }
 
@@ -137,10 +131,11 @@
   margin-bottom: 2rem;
   font-size: 20px;
   font-weight: bold;
+  width: 300px;
 }
 
 .link{
-  width: 100vw;
+  width: 300px;
   height: auto;
   font-size: 14px;
   color: #000;

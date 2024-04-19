@@ -2,11 +2,13 @@
 import MenuIcon from '@mui/icons-material/Menu';
 import styles from "./page.module.css";
 import { useState } from 'react';
+import Hamburguer from './components/Hamburguer/index';
 
 export default function Home() {
 
   const [link, setLink] = useState("")
   const [modal, setModal] = useState(false)
+  const [menu, setMenu] = useState(false)
   const [formValues, setFormValues] = useState({
     text: "",
     phoneNumber: ""
@@ -26,12 +28,15 @@ export default function Home() {
     setModal(false)
   }
 
+  const handleClick = () => {
+    setMenu(!menu)
+  }
 
   return (
     <main className={styles.main}>
       <nav className={styles.navBar}>
         <h1>Chat2Link</h1>
-        <button className={styles.menuButton}>
+        <button className={styles.menuButton} onClick={handleClick}>
           <MenuIcon className={styles.menuIcon}></MenuIcon>
         </button>
       </nav>
@@ -60,6 +65,8 @@ export default function Home() {
             <button onClick={closeModal}>Fechar</button>
           </div>
         </div>}
+
+        {menu && <Hamburguer/>}
     </main>
   );
 }
